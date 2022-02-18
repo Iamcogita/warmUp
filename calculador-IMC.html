@@ -1,0 +1,109 @@
+<meta charset="UTF-8">
+<!-- comentário em HTML -->
+<style>
+/* comentário em css */
+/* elementos visuais */
+.roundedborder {
+	border-radius: 15px;
+	border: 2px solid #e4e4e4;
+	padding: 20px;
+	width:440px;
+	}
+.calcButton {
+	cursor: pointer; 
+	background-color: #21b24b;
+	padding: 8px;
+	color: white;
+	border: none;
+	}
+</style>
+<body>
+<div class="roundedborder">
+<script>
+//comentário em javascript
+//varias maneiras de fazer break ao texto
+	function pularlinha() {
+		document.write("<br>");
+	};
+	function mostra(f) {
+		document.write(f);
+		pularlinha();
+	};
+	var	nome = prompt("Qual é o teu nome?");
+	var idadeA = prompt("Em que ano nasceste, " + nome + "?");
+	document.write("<h2>Bem	vindo, " + nome + "!</h2>");
+	var idade = 2022 - idadeA ;
+	function calcularIdadeEmDias (idade) {
+		return idade * 356;
+	};
+	function calcularBatimentosCardiacos (idadeEmDias) {
+		return idadeEmDias * 24 * 60 * 88;
+	};
+	mostra("<b>O teu coração bateu, aproximadamente, </b>" + calcularBatimentosCardiacos(calcularIdadeEmDias(idade)) + "<b> vezes desde que nasceste! </b>");
+
+//texto introdutório
+	mostra("______________________________________________________<br>");
+	mostra("O meu nome é Leonel David.");
+	document.write("Eu nasci em ");
+	document.write(2022 - 34);
+	var alturaV = 1.79;
+	var pesoV = 71;
+	var imcV = Math.round (pesoV / (alturaV * alturaV));
+	document.write(". O meu peso é " + pesoV + ", e a minha altura é " + alturaV + " metros. <p>");
+	mostra("O meu <b> IMC </b> é aproximadamente " + imcV + ".");
+	mostra("O que significa que tenho um peso saudável!");
+	mostra("______________________________________________________<br>");
+	mostra("Calcula o teu <b>IMC!</b>");
+
+//script que faz o botao funcionar
+	window.onload = () => {
+		let button = document.querySelector("#btn");	
+		button.addEventListener("click", calcularIMC);
+	};
+
+	function calcularIMC() {	
+		let altura = parseInt(document.querySelector("#altura").value);
+		
+		let peso = parseInt(document.querySelector("#peso").value); 
+		
+		let calculo = document.querySelector("#resultado"); 
+		
+		if (altura === "" || isNaN(altura)) calculo.innerHTML = "Altura em cm!";
+		
+		else if (peso === "" || isNaN(peso)) calculo.innerHTML = "Peso em kg!"; 
+	   
+		else { 
+		let imc = (peso / ((altura *altura) / 10000)).toFixed(2);
+			
+			if (imc >= 18.5 && imc < 24.9)
+			calculo.innerHTML = `Peso Saudável : <span>${imc}</span>`;
+			
+			else if (imc < 18.5 )
+			calculo.innerHTML = `Coma mais! <span>${imc}</span>`;
+			
+			else
+			calculo.innerHTML = `Faça dieta ! <span>${imc}</span>`;
+		};
+	};
+</script>
+</div><br>
+<div class="roundedborder">
+<h1>Calculador de IMC:</h1>
+		<table>
+		<tr>
+		<th>Altura (cm)</th>
+		<th>Peso (kg)</th>
+		<th>IMC</th>
+		</tr>
+		
+		<tr>
+		<td><input type= "text" id= "altura"></td>
+		<td><input type= "text" id= "peso"></td>
+		<td><button class="calcButton" id="btn" > Calcular </button></td>
+		</tr>
+		
+		<tr>
+		<td height=22px bgcolor="#e4e4e4" align="center" id="resultado"> O seu IMC </td>
+		</tr>
+</div>
+</body>
