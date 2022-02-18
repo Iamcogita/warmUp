@@ -1,0 +1,61 @@
+<meta charset="UTF-8">
+<script>
+window.onload = () => {
+		let button = document.querySelector("#btn");	
+		button.addEventListener("click", checkPcomp);
+		};
+function Calc() {
+	var Pcomp = parseInt(document.querySelector("#Pcomp").value);
+	var alturaP = Pcomp / 20 ;
+	var alturaCabo2 = alturaP - (alturaP/5) ;
+	var alturaCabo3 = alturaP - (alturaP/5)*2 ;
+	var alturaCabo4 = alturaP - (alturaP/5)*3 ;
+	var alturaCabo5 = alturaP - (alturaP/5)*4 ;
+	var compCabo1 = Math.sqrt(alturaP**2 + (Pcomp/2)**2) ;
+	var compCabo2 = Math.sqrt(alturaCabo2**2 + (Pcomp/2-(Pcomp/2)/5)**2) ;
+	var compCabo3 = Math.sqrt(alturaCabo3**2 + (Pcomp/2-((Pcomp/2)/5)*2)**2) ;
+	var compCabo4 = Math.sqrt(alturaCabo4**2 + (Pcomp/2-((Pcomp/2)/5)*3)**2) ;
+	var compCabo5 = Math.sqrt(alturaCabo5**2 + (Pcomp/2-((Pcomp/2)/5)*4)**2) ;
+	return compCabo1 + compCabo2 + compCabo3 + compCabo4 + compCabo5 * 4 *1000 ;
+};
+function checkPcomp() {
+	let resultado = document.querySelector("#resultado");
+	var Pcomp = parseInt(document.querySelector("#Pcomp").value);
+		if (Pcomp < 2 || Pcomp > 4) resultado.innerHTML = `<span style= "color: red" > Comprimento inválido </span>`;
+		else if (Pcomp === "" || isNaN(Pcomp)) resultado.innerHTML = `<span style= "color: red" > Não é um número! </span>`;
+		else resultado.innerHTML = "A ponte terá aproximadamente " + Math.round(Calc()) + " metros de cabos." ;
+};
+</script>
+<style>
+.text {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	}
+.textSmall {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 80%;
+	}
+.borders {
+	border: 2px solid #e4e4e4;
+	padding: 20px;
+	width: 50%;
+	}
+.calcButton {
+	cursor: pointer; 
+	border-collapse: separate;
+	border-spacing: 100px;
+	}
+</style>
+<div class="borders">
+<span class="text"><b>|| Exercício 1 ||</b><p>
+O comprimento da ponte suspensa será fornecido pelo usuário em quilômetros e deve estar entre 2 e
+4. Sabe-se que a ponte terá quatro hastes de sustentação, duas na parte terrestre do estado de Mato Grosso
+do Sul e outras duas na parte terrestre do estado de São Paulo, e estas ficam nas margens direita e esquerda.
+Tem-se, ainda, que a altura da haste, e onde deve ser fixado o cabo de aço mais alto, deve ser de 1/20 da extensão da ponte.
+O cabo de aço mais alto será fixado obrigatoriamente no meio da ponte. Cada haste, num total de quatro, sustentará cinco cabos de aço equidistantes.
+</span><p><hr>
+<h3 class="text"> O comprimento da ponte será entre 2 a 4 kilómetros: </h3>
+<span class="textSmall">Insira um número entre 2 e 4:</span><br>
+<input type= "text" id= "Pcomp"> <button class="calcButton" id="btn" > Calcular </button><p>
+<span id= "resultado"></span>
+</div>
