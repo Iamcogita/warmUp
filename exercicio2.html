@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+<style>
+.roundedborder {
+	border-radius: 15px;
+	border: 2px solid #e4e4e4;
+	padding: 20px;
+	width:440px;
+	}
+</style>
+<body>
+	<div class="roundedborder">
+	<h1> Área total de papelão:</h1><p>
+	<span id="resultado"> </span>
+	</div>
+</body>
+<script>
+
+	let	DiamCir1 = prompt( "Qual é o diametro do circulo maior em centímetros?" ) ;
+	let calculo = document.querySelector("#resultado");
+	DiamCir1 = parseInt(DiamCir1);
+		if (DiamCir1 === "" || isNaN(DiamCir1)) calculo.innerHTML = " Diametro em centímetros! Faça refresh à página e volte a tentar. " ;
+		else calculo.innerHTML = "Vão ser necessários no mínimo " + Math.round(calc()) + " centímetros quadrados de papelão!";
+
+function calc() {
+	let Acir1 = Math.PI * ((DiamCir1 / 2)**2) ;
+	let Acir2 = Math.PI * (((DiamCir1 / 2) - (DiamCir1 / 2) /6 )**2) ;
+	let Acir3 = Math.PI * ((((DiamCir1 / 2) - (DiamCir1 / 2) /6 )*2)**2) ;
+	let Acir4 = Math.PI * ((((DiamCir1 / 2) - (DiamCir1 / 2) /6 )*3)**2) ;
+	let Acir5 = Math.PI * ((((DiamCir1 / 2) - (DiamCir1 / 2) /6 )*4)**2) ;
+	let Acir6 = Math.PI * ((((DiamCir1 / 2) - (DiamCir1 / 2) /6 )*5)**2) ;
+		return ( Acir1 + Acir2 + Acir3 + Acir4 + Acir5 + Acir6 ) * 5000 ;
+};
+</script>
