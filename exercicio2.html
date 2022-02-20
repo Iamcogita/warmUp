@@ -19,7 +19,7 @@
 	let calculo = document.querySelector("#resultado");
 	DiamCir1 = parseInt(DiamCir1);
 		if (DiamCir1 === "" || isNaN(DiamCir1)) calculo.innerHTML = " Diametro em centímetros! Faça refresh à página e volte a tentar. " ;
-		else calculo.innerHTML = "Vão ser necessários no mínimo " + Math.round(calc()) + " centímetros quadrados de papelão!";
+		else calculo.innerHTML = "Vão ser necessários no mínimo " + Math.round(calc() / 100 ) + " metros quadrados de papelão, sem contar com desperdícios! ";
 
 function calc() {
 	let Acir1 = Math.PI * ((DiamCir1 / 2)**2) ;
