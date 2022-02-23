@@ -1,0 +1,54 @@
+<meta charset = "UTF-8">
+<style>
+.roundedborder {
+	border-radius: 15px;
+	border: 2px solid #e4e4e4;
+	padding: 20px;
+	width: 1000px;
+	font-family: Arial; Helvetica; Sans-Serif;
+	font-size: 20px;
+	}
+</style>
+<div class = "roundedborder">
+<img src="./exercicio3.jpg"><P>
+<h2>Resultado: </h2>
+<script>
+alert ("Uma pessoa deseja colocar pregos a determinada altura do chão. Para isso, deverá comprar uma escada e apoiá-la na parede. Essa escada formará um ângulo conhecido como chão. Pelas especificações do Inmetro, todas as escadas produzidas no Brasil têm uma distância de 30 centímetros entre os degraus. Assim, deve-se construir um programa para saber que tipo de escada comprar, ou seja, quantos degraus deve ter a escada para que a altura do prego seja atingida, mesmo que aproximadamente. Desconsidere a altura da pessoa que fará o serviço.")
+
+function calc() {
+
+let angChao;
+let angRad;
+let altPrego;
+let altEscada;
+let Ndegraos;
+	
+do
+	angChao = prompt ("Em que angulo estará a escada com o chão?");
+	while ( angChao < 1 || angChao > 89 );
+	angRad = ( angChao * Math.PI / 180 );
+	console.log(angRad);
+	
+do
+	altPrego = prompt ("A que altura vai ser colocado o prego? Introduza em centímetros:");
+	while ( altPrego < 30 || altPrego > 1000 );
+	altEscada = altPrego / Math.sin ( angRad );
+	Ndegraos = Math.floor( altEscada / 30 );
+		if (altEscada% 30 === 0) {
+			Ndegraos = Ndegraos - 1 ;
+			};
+	altEscada = altEscada / 100 ;
+	document.write ("A altura da escada será " + altEscada.toFixed(2) + " metros. E terá " + Ndegraos + " degraos.");
+	if ( altEscada > 5 ) {
+		document.write ("<br>A escada é muito alta!");
+	};
+	if ( altEscada > 8 ) {
+		document.write ("<br><b>Perígo!!!</b>");
+	};
+	if ( altEscada < 1.5 ) {
+		document.write ("<br><i>Não precisa de uma escada, não é? :D </i>");
+	};
+};
+console.log(calc())
+</script>
+</div>
