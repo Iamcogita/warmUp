@@ -1,0 +1,51 @@
+<html>
+<meta charset="UTF-8">
+<style>
+.borders {
+	font-family: Arial, Helvetica, sans-serif;
+	border-radius: 15px;
+	border: 2px solid #e4e4e4;
+	padding: 20px;
+	width: 840px;
+	position-float: right;
+	}
+.calcButton {
+	cursor: pointer;
+	}
+</style>
+<body>
+<div class="borders">
+<img src="./exercicio4.jpg"><P>
+<script>
+window.onload = () => {
+	let button = document.querySelector("#btn");
+	button.addEventListener("submit", doingit);
+	};
+	
+function convertToBinary (number) {
+    var num = number;
+    var binary = (num % 2).toString();
+    while (num > 1) {
+        num = parseInt(num / 2);
+        binary =  (num % 2) + (binary);
+    }
+    return binary;
+	};
+
+function doingit(event) {
+	event.preventDefault()
+	var numerodecimal;
+	do 
+	numerodecimal = parseInt(document.querySelector("#numDecimal").value);
+	while (numerodecimal <= 0);
+	resultado.innerHTML = "<P>O número " +numerodecimal+ " equivale a " +convertToBinary(numerodecimal)+ " em numeração binária";
+	};
+console.log(doingit);
+</script>
+<span>Insira um número positivo:</span><br>
+<form id="btn">
+<input type= "number" id= "numDecimal"> <button class="calcButton" id="btn" > Calcular </button></form><p>
+<span id= "resultado"> </span><p>
+</div>
+</body>
+</html>
